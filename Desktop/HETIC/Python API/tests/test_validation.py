@@ -1,6 +1,6 @@
 import pytest
 
-from app.outils.validation import email_valide 
+from app.outils.validation import email_valide
 
 
 def test_email_valide_normal():
