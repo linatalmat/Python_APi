@@ -5,7 +5,7 @@ import math
 
 def _valider_nombre(valeur: float, nom: str) -> float:
     if isinstance(valeur, bool) or not isinstance(valeur, (int, float)):
-        raise ValueError(f"{nom} doit être un nombre")
+        raise ValueError(f"{nom} doit être un nombre")  # noqa: TRY004
     if not math.isfinite(valeur):
         raise ValueError(f"{nom} doit être fini")
     return float(valeur)

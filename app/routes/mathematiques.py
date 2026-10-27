@@ -1,8 +1,8 @@
-﻿"""Routes mathématiques et validation d'e-mail."""
+"""Routes mathématiques et validation d'e-mail."""
 
 from fastapi import APIRouter
 
-from app.outils.math import factorielle, est_premier, pgcd
+from app.outils.math import est_premier, factorielle, pgcd
 from app.outils.validation import email_valide
 
 router = APIRouter(tags=["Mathématiques et validation"])

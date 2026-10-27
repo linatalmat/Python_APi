@@ -51,7 +51,6 @@ def test_route_email_valide():
     assert response.json()["resultat"] is True
 
 
-
 def test_route_email_invalide():
     response = client.get("/email-valide/abc")
 
