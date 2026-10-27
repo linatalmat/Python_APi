@@ -1,4 +1,5 @@
-from app.outils.texte import est_palindrome, compter_voyelles, inverser, est_mdp_robuste
+from app.outils.texte import compter_voyelles, est_mdp_robuste, est_palindrome, inverser
+
 
 def test_est_palindrome():
     assert est_palindrome ("kayak") == True
