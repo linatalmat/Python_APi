@@ -1,6 +1,6 @@
 import pytest
 
-from app.outils.math import factorielle, est_premier, pgcd
+from app.outils.math import est_premier, factorielle, pgcd
 
 
 def test_factorielle_normal():
