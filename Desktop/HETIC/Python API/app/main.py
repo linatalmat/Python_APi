@@ -1,72 +1,17 @@
-from fastapi import FastAPI, HTTPException
+"""Point d'entrée FastAPI du projet."""
 
-from app.outils.math import est_premier, factorielle, pgcd
-from app.outils.validation import email_valide
+from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 
-app = FastAPI(title="Python API")
+from app.erreurs import gerer_erreur_valeur, gerer_erreur_validation
+from app.routes.conversion import router as routeur_conversion
 
+app = FastAPI(
+    title="Mini API Python",
+    description="API d'exercices de conversion et de validation.",
+    version="1.0.0",
+)
 
-@app.get("/factorielle/{n}")
-def route_factorielle(n: int):
-    try:
-        return {
-            "n": n,
-            "resultat": factorielle(n)
-        }
-    except ValueError as e:
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
-
-
-@app.get("/est-premier/{n}")
-def route_est_premier(n: int):
-    try:
-        return {
-            "n": n,
-            "resultat": est_premier(n)
-        }
-    except ValueError as e:
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
-
-
-@app.get("/pgcd/{a}/{b}")
-def route_pgcd(a: int, b: int):
-    try:
-        return {
-            "a": a,
-            "b": b,
-            "resultat": pgcd(a, b)
-        }
-    except ValueError as e:
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
-        
-        
-@app.get("/email-valide/{email}")
-def route_email_valide(email: str):
-    try:
-        resultat = email_valide(email)
-
-        if not resultat:
-            raise HTTPException(
-                status_code=400,
-                detail="Adresse e-mail invalide"
-            )
-
-        return {
-            "email": email,
-            "resultat": resultat
-        }
-
-    except ValueError as e:
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+app.add_exception_handler(RequestValidationError, gerer_erreur_validation)
+app.add_exception_handler(ValueError, gerer_erreur_valeur)
+app.include_router(routeur_conversion)
