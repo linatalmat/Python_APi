@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from app.utils.texte import (
+from app.outils.texte import (
     est_palindrome,
     compter_voyelles,
     inverser,
