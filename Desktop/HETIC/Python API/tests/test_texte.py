@@ -14,7 +14,7 @@ def test_compter_voyelles():
     assert compter_voyelles("bonjour") == 3
 
 def test_compter_voyelles_sans_voyelle():
-    assert compter_voyelles("rythme") == 2
+    assert compter_voyelles("pst") == 2
 
 def test_compter_voyelles_vide():
     assert compter_voyelles("") == 0
