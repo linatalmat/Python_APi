@@ -1,4 +1,3 @@
-﻿
 """Point d'entrée FastAPI du projet."""
 
 from fastapi import FastAPI

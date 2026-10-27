@@ -21,7 +21,9 @@ def route_km_miles(kilometres: float = Query(...)) -> dict[str, float]:
 
 
 @router.get("/conversion/euros-devise")
-def route_euros_devise(euros: float = Query(...), taux: float = Query(...)) -> dict[str, float]:
+def route_euros_devise(
+    euros: float = Query(...), taux: float = Query(...)
+) -> dict[str, float]:
     """Convertit un montant en euros au taux de change fourni."""
     return {"resultat": euros_devise(euros, taux)}
 
